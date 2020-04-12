@@ -1,9 +1,16 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class TestHiLoEngine {
 
-    private static HiLoEngine hiLoEngine = new HiLoEngine();
+    private static FileOperations fileOperations = new FileOperations();
+    private static HiLoEngine hiLoEngine = new HiLoEngine(fileOperations);
+
+    @BeforeAll
+    public static void init() {
+        fileOperations.fileCreation("test.dat");
+    }
 
     @Test
     public void numberConvertTest () {
